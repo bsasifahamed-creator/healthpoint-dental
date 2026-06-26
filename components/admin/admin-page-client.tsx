@@ -1,11 +1,14 @@
 'use client';
 
-import { CalendarCheck, LogOut, Stethoscope, FileText, DollarSign, XCircle } from 'lucide-react';
+import { useState } from 'react';
+import { CalendarCheck, LogOut, Stethoscope, FileText, DollarSign, XCircle, Edit3 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { AdminBackground } from '@/components/admin/admin-background';
 import { AdminMobileNav } from '@/components/admin/admin-mobile-nav';
 import { StatusPill } from '@/components/admin/status-pill';
+import { EditBookingModal } from '@/components/admin/edit-booking-modal';
 import { logoutAdmin } from '@/app/admin/actions';
 import { cancelBookingForm } from '@/app/admin/actions';
 
@@ -23,6 +26,21 @@ function StatCard({ label, value, tint }: { label: string; value: number; tint: 
 }
 
 export function AdminPageClient({ bookings, error }: { bookings: any[]; error?: string }) {
+  const router = useRouter();
+  const [editingBooking, setEditingBooking] = useState<any | null>(null);
+
+  const handleUpdate = async (updates: any) => {
+    const res = await fetch('/api/bookings/update', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ bookingId: editingBooking.id, updates }),
+    });
+    
+    if (!res.ok) throw new Error('Update failed');
+    
+    router.refresh();
+  };
+
   const counts = bookings.reduce(
     (acc, b) => {
       const s = (b.status ?? 'pending').toLowerCase();
@@ -137,17 +155,25 @@ export function AdminPageClient({ bookings, error }: { bookings: any[]; error?: 
                         <StatusPill status={b.status as string} />
                       </td>
                       <td className="px-5 py-4 text-right">
-                        {b.status !== 'cancelled' ? (
-                          <form action={cancelBookingForm} className="inline-block">
-                            <input type="hidden" name="id" value={b.id} />
-                            <button type="submit" className="glass-pill inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-[11px] font-semibold text-red-600 transition-colors hover:text-red-700">
-                              <XCircle className="size-3" strokeWidth={2} />
-                              Cancel
-                            </button>
-                          </form>
-                        ) : (
-                          <span className="text-xs text-ink-dim">—</span>
-                        )}
+                        <div className="flex items-center justify-end gap-2">
+                          <button
+                            type="button"
+                            onClick={() => setEditingBooking(b)}
+                            className="glass-pill inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-[11px] font-semibold text-teal transition-colors hover:text-teal/80"
+                          >
+                            <Edit3 className="size-3" strokeWidth={2} />
+                            Edit
+                          </button>
+                          {b.status !== 'cancelled' && (
+                            <form action={cancelBookingForm} className="inline-block">
+                              <input type="hidden" name="id" value={b.id} />
+                              <button type="submit" className="glass-pill inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-[11px] font-semibold text-red-600 transition-colors hover:text-red-700">
+                                <XCircle className="size-3" strokeWidth={2} />
+                                Cancel
+                              </button>
+                            </form>
+                          )}
+                        </div>
                       </td>
                     </tr>
                   ))}
@@ -162,6 +188,14 @@ export function AdminPageClient({ bookings, error }: { bookings: any[]; error?: 
           <p className="text-[11px] text-ink-dim">Confidential clinic data — handle with care.</p>
         </footer>
       </main>
+
+      {editingBooking && (
+        <EditBookingModal
+          booking={editingBooking}
+          onClose={() => setEditingBooking(null)}
+          onUpdate={handleUpdate}
+        />
+      )}
     </div>
   );
 }
