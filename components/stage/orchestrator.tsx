@@ -79,9 +79,10 @@ export function Orchestrator({ baseY }: { baseY?: number }) {
       rotationInitialized.current = true;
     }
 
-    // Move tooth to the right during hero scroll (keep rotation unchanged).
-    const rollIn = THREE.MathUtils.smoothstep(heroProgress, 0, 1);
-    const rightOffset = rollIn * 1.0;
+    // Move tooth to the right AFTER hero section (not during).
+    const afterHero = THREE.MathUtils.clamp((scrollY - heroSpan) / heroSpan, 0, 1);
+    const moveRight = THREE.MathUtils.smoothstep(afterHero, 0, 1);
+    const rightOffset = moveRight * 1.0;
     const targetX = basePosition.current.x + rightOffset;
     tooth.position.x += (targetX - tooth.position.x) * positionK;
     tooth.position.y += (basePosition.current.y - tooth.position.y) * positionK;
