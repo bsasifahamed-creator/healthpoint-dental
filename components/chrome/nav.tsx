@@ -1,12 +1,121 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useRef } from 'react';
 import { Phone, MessageCircle, Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useBookingStore } from '@/lib/booking-store';
 import { LiquidButton } from '@/components/ui/liquid-glass-button';
 import { AnimatePresence, motion } from 'motion/react';
+
+function MobileMenu({ onClose, openBooking }: { onClose: () => void; openBooking: () => void }) {
+  const touchStartX = useRef<number>(0);
+  const touchCurrentX = useRef<number>(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchCurrentX.current = 0;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchCurrentX.current = e.touches[0].clientX - touchStartX.current;
+  };
+
+  const handleTouchEnd = () => {
+    const swipeDistance = touchCurrentX.current;
+    if (swipeDistance > 80) {
+      onClose();
+    }
+    touchStartX.current = 0;
+    touchCurrentX.current = 0;
+  };
+
+  return (
+    <motion.div
+      initial={{ x: '100%' }}
+      animate={{ x: 0 }}
+      exit={{ x: '100%' }}
+      transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+      className="fixed inset-0 z-[56] md:hidden"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      <div
+        className="absolute inset-0 h-full w-full"
+        style={{
+          background:
+            'radial-gradient(70% 60% at 20% 30%, #d4f8ea 0%, #c9f3d9 35%, #ddffd2 65%, #eefcff 100%)',
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-white/40" />
+      <div className="relative h-full overflow-y-auto px-6 max-[390px]:px-4 pt-24 pb-8">
+        <ul className="flex flex-col gap-6 max-[390px]:gap-5 text-lg max-[390px]:text-base font-medium text-ink pt-4">
+          <li>
+            <a href="/" onClick={onClose}>
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="#scene-services" onClick={onClose}>
+              Services
+            </a>
+          </li>
+          <li>
+            <a href="#scene-why" onClick={onClose}>
+              Why Us
+            </a>
+          </li>
+          <li>
+            <a href="#scene-team" onClick={onClose}>
+              Team
+            </a>
+          </li>
+          <li>
+            <a href="#contact" onClick={onClose}>
+              Contact
+            </a>
+          </li>
+          <li>
+            <Link href="/blog" onClick={onClose}>
+              Blog
+            </Link>
+          </li>
+          <li className="pt-6 border-t border-stroke">
+            <a href="tel:+971585886915" className="flex items-center gap-2 text-teal">
+              <Phone className="size-5" strokeWidth={1.5} aria-hidden />
+              +971 58 588 6915
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://wa.me/971585886915"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-green-dim"
+              onClick={onClose}
+            >
+              <MessageCircle className="size-5" strokeWidth={1.5} aria-hidden />
+              WhatsApp
+            </a>
+          </li>
+          <li>
+            <LiquidButton
+              type="button"
+              onClick={() => {
+                openBooking();
+                onClose();
+              }}
+              className="liquid-cta w-full rounded-full"
+            >
+              Book Now
+            </LiquidButton>
+          </li>
+        </ul>
+      </div>
+    </motion.div>
+  );
+}
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -132,96 +241,7 @@ export function Nav() {
               className="fixed inset-0 z-[55] md:hidden bg-black/30"
               onClick={() => setMobileOpen(false)}
             />
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 right-0 z-[56] md:hidden w-full max-w-xs"
-            >
-              <div
-                className="absolute inset-0 h-full w-full"
-                style={{
-                  background:
-                    'radial-gradient(70% 60% at 20% 30%, #d4f8ea 0%, #c9f3d9 35%, #ddffd2 65%, #eefcff 100%)',
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-white/40" />
-              <div className="relative h-full overflow-y-auto px-6 max-[390px]:px-4 pt-20 pb-8">
-                <div className="flex items-center justify-end mb-6">
-                  <button
-                    type="button"
-                    onClick={() => setMobileOpen(false)}
-                    className="size-10 flex items-center justify-center rounded-full hover:bg-white/50 transition-colors"
-                    aria-label="Close menu"
-                  >
-                    <X className="size-5" strokeWidth={1.5} />
-                  </button>
-                </div>
-                <ul className="flex flex-col gap-6 max-[390px]:gap-5 text-lg max-[390px]:text-base font-medium text-ink">
-                  <li>
-                    <a href="/" onClick={() => setMobileOpen(false)}>
-                      Home
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#scene-services" onClick={() => setMobileOpen(false)}>
-                      Services
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#scene-why" onClick={() => setMobileOpen(false)}>
-                      Why Us
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#scene-team" onClick={() => setMobileOpen(false)}>
-                      Team
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#contact" onClick={() => setMobileOpen(false)}>
-                      Contact
-                    </a>
-                  </li>
-                  <li>
-                    <Link href="/blog" onClick={() => setMobileOpen(false)}>
-                      Blog
-                    </Link>
-                  </li>
-                  <li className="pt-6 border-t border-stroke">
-                    <a href="tel:+971585886915" className="flex items-center gap-2 text-teal">
-                      <Phone className="size-5" strokeWidth={1.5} aria-hidden />
-                      +971 58 588 6915
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://wa.me/971585886915"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-green-dim"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      <MessageCircle className="size-5" strokeWidth={1.5} aria-hidden />
-                      WhatsApp
-                    </a>
-                  </li>
-                  <li>
-                    <LiquidButton
-                      type="button"
-                      onClick={() => {
-                        open();
-                        setMobileOpen(false);
-                      }}
-                      className="liquid-cta w-full rounded-full"
-                    >
-                      Book Now
-                    </LiquidButton>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
+            <MobileMenu onClose={() => setMobileOpen(false)} openBooking={open} />
           </>
         )}
       </AnimatePresence>
