@@ -126,7 +126,7 @@ export function ToothStage() {
           <StageErrorBoundary fallback={<FallbackTooth />}>
             <ToothModel />
           </StageErrorBoundary>
-          <Orchestrator baseY={-0.15} />
+          <Orchestrator baseY={-0.55} />
         </Suspense>
         <AdaptiveDpr pixelated />
         <AdaptiveEvents />

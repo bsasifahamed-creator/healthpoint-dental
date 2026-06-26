@@ -7,7 +7,6 @@ import { BookingDrawer } from '@/components/booking/drawer';
 import { DesktopOnly } from '@/components/layout/DesktopOnly';
 import { LiquidEffectAnimation } from '@/components/ui/liquid-effect-animation';
 import { Chatbot } from '@/components/chrome/chatbot';
-import { CustomCursor } from '@/components/ui/custom-cursor';
 import { SiteLoader } from '@/components/chrome/site-loader';
 import { JsonLd } from '@/components/seo/json-ld';
 import './globals.css';
@@ -83,9 +82,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <BookingDrawer />
           <Chatbot />
         </LenisProvider>
-        <DesktopOnly>
-          <CustomCursor />
-        </DesktopOnly>
         <SiteLoader />
         <Toaster theme="light" richColors position="top-center" />
       </body>
