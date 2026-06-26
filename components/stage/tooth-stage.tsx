@@ -117,7 +117,7 @@ export function ToothStage() {
           toneMappingExposure: 1.1,
           outputColorSpace: THREE.SRGBColorSpace,
         }}
-        camera={{ position: [0, 0, 6.2], fov: 25 }}
+        camera={{ position: [0, 0, 5], fov: 25 }}
         performance={{ min: 0.5 }}
       >
         <Suspense fallback={null}>

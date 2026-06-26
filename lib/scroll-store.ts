@@ -13,7 +13,7 @@ interface ScrollState {
 
 export const useScrollState = create<ScrollState>((set) => ({
   px: 0.5,
-  py: 0.05,
+  py: 0.15,
   pz: 0,
   rx: Math.PI * 0.08,
   ry: Math.PI * 0.08,
