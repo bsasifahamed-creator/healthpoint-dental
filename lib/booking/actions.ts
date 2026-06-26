@@ -103,7 +103,7 @@ export async function createBooking(input: BookingInput) {
       .single();
 
     if (!error && booking) {
-      await sendBookingNotifications(booking as BookingRow).catch((err) => console.error('Notify failed:', err));
+      await sendBookingNotifications(booking).catch((err) => console.error('Notify failed:', err));
       revalidatePath('/admin');
       return { ok: true, error: null, booking };
     }
