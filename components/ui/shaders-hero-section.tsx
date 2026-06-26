@@ -1,5 +1,6 @@
 'use client';
 
+import { ShaderErrorBoundary } from '@/components/ui/shader-error-boundary';
 import { MeshGradient, PulsingBorder } from '@paper-design/shaders-react';
 import { motion } from 'framer-motion';
 import type React from 'react';
@@ -61,11 +62,13 @@ export function ShaderBackground({ children }: ShaderBackgroundProps) {
         </defs>
       </svg>
 
-      <MeshGradient
-        className="absolute inset-0 h-full w-full"
-        colors={['#f3fffb', '#d4f8ea', '#c9f3d9', '#ddffd2', '#eefcff']}
-        speed={isActive ? 0.4 : 0.26}
-      />
+      <ShaderErrorBoundary>
+        <MeshGradient
+          className="absolute inset-0 h-full w-full"
+          colors={['#f3fffb', '#d4f8ea', '#c9f3d9', '#ddffd2', '#eefcff']}
+          speed={isActive ? 0.4 : 0.26}
+        />
+      </ShaderErrorBoundary>
 
       <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_78%_26%,rgba(126,211,33,0.32),rgba(126,211,33,0.08)_45%,transparent_72%)]" />
       <div className="absolute inset-0 bg-gradient-to-b from-white/12 via-white/0 to-white/20" />

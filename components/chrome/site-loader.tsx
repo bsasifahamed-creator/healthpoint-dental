@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
+import { ShaderErrorBoundary } from '@/components/ui/shader-error-boundary';
 import { MeshGradient } from '@paper-design/shaders-react';
 
 /**
@@ -69,18 +70,18 @@ export function SiteLoader() {
           role="status"
           aria-live="polite"
         >
-          {/* Identical shader stack to the hero — keeps the loader visually
-              continuous with the site behind it. */}
-          <MeshGradient
-            className="absolute inset-0 h-full w-full"
-            colors={['#f3fffb', '#d4f8ea', '#c9f3d9', '#ddffd2', '#eefcff']}
-            speed={0.26}
-          />
-          <MeshGradient
-            className="absolute inset-0 h-full w-full opacity-55"
-            colors={['#84e1bc', '#9be37f', '#7ed321', '#6dd3af']}
-            speed={0.2}
-          />
+          <ShaderErrorBoundary>
+            <MeshGradient
+              className="absolute inset-0 h-full w-full"
+              colors={['#f3fffb', '#d4f8ea', '#c9f3d9', '#ddffd2', '#eefcff']}
+              speed={0.26}
+            />
+            <MeshGradient
+              className="absolute inset-0 h-full w-full opacity-55"
+              colors={['#84e1bc', '#9be37f', '#7ed321', '#6dd3af']}
+              speed={0.2}
+            />
+          </ShaderErrorBoundary>
           <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_78%_26%,rgba(126,211,33,0.32),rgba(126,211,33,0.08)_45%,transparent_72%)]" />
           <div className="absolute inset-0 bg-gradient-to-b from-white/12 via-white/0 to-white/20" />
           <div
