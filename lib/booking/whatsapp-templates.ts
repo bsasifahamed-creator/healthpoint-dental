@@ -141,6 +141,76 @@ export const WHATSAPP_TEMPLATES: Record<
     ]
       .filter(Boolean)
       .join('\n'),
+
+  implants: ({ name, preferredTime }) =>
+    [
+      `Hi Health Point Dental,`,
+      ``,
+      `I'd like to book a Dental Implants consultation (from AED 499).`,
+      `I'm interested in understanding the full treatment plan, timeline, and costs.`,
+      ``,
+      preferredTime ? `Preferred time: ${preferredTime}.` : `When could I come in for an assessment?`,
+      name ? `My name is ${name}.` : ``,
+      `Thank you!`,
+    ]
+      .filter(Boolean)
+      .join('\n'),
+
+  veneers: ({ name, preferredTime }) =>
+    [
+      `Hi Health Point Dental,`,
+      ``,
+      `I'd like to book a Veneers consultation (from AED 799).`,
+      `I'm interested in porcelain veneers for a smile makeover.`,
+      ``,
+      preferredTime ? `Preferred time: ${preferredTime}.` : `When could I come in for a consultation?`,
+      name ? `My name is ${name}.` : ``,
+      `Thanks!`,
+    ]
+      .filter(Boolean)
+      .join('\n'),
+
+  invisalign: ({ name, preferredTime }) =>
+    [
+      `Hi Health Point Dental,`,
+      ``,
+      `I'm interested in Invisalign clear aligners (from AED 599).`,
+      `Could you let me know:`,
+      `• Whether Invisalign is suitable for my case`,
+      `• An indicative treatment timeline and total cost`,
+      ``,
+      preferredTime ? `Preferred time: ${preferredTime}.` : `When could I come in for a consultation?`,
+      name ? `My name is ${name}.` : ``,
+      `Thanks!`,
+    ]
+      .filter(Boolean)
+      .join('\n'),
+
+  'braces-adjustment': ({ name, preferredTime }) =>
+    [
+      `Hi Health Point Dental,`,
+      ``,
+      `I'd like to book a Braces Adjustment appointment (from AED 99).`,
+      preferredTime ? `Preferred time: ${preferredTime}.` : `Could you share the next available slot?`,
+      name ? `My name is ${name}.` : ``,
+      `Thank you!`,
+    ]
+      .filter(Boolean)
+      .join('\n'),
+
+  'crowns-bridges': ({ name, preferredTime }) =>
+    [
+      `Hi Health Point Dental,`,
+      ``,
+      `I'd like to book a Crowns & Bridges consultation (from AED 299).`,
+      `Could you let me know what's included in the quote and how many visits to expect?`,
+      ``,
+      preferredTime ? `Preferred time: ${preferredTime}.` : `When is your next available slot?`,
+      name ? `My name is ${name}.` : ``,
+      `Thanks!`,
+    ]
+      .filter(Boolean)
+      .join('\n'),
 };
 
 export function buildWhatsAppUrl(message: string) {

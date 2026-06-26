@@ -77,7 +77,7 @@ export default async function Image() {
             maxWidth: '700px',
           }}
         >
-          Al Barsha 1, Dubai · DHA Licensed · Walk-ins Daily 1PM–9PM
+          Al Barsha 1, Dubai · DHA Licensed · Walk-ins Daily 8AM–8PM
         </div>
         <div
           style={{

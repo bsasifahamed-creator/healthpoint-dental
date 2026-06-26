@@ -294,7 +294,7 @@ export function Contact({ id }: { id: string }) {
             </a>
 
             <a
-              href="mailto:hello@healthpointdental.ae"
+              href="mailto:healthpoint316@gmail.com"
               className="glass-card flex items-start gap-4 rounded-2xl p-5 transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
             >
               <div className="glass-pill grid size-11 shrink-0 place-items-center rounded-xl">
@@ -305,7 +305,7 @@ export function Contact({ id }: { id: string }) {
                   Email
                 </p>
                 <p className="font-display text-lg font-bold text-ink leading-tight">
-                  hello@healthpointdental.ae
+                  healthpoint316@gmail.com
                 </p>
                 <p className="text-xs text-ink-mid mt-0.5">For records, referrals, and invoices</p>
               </div>

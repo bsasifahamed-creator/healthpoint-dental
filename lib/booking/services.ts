@@ -8,6 +8,10 @@ import {
   Pipette,
   Scissors,
   Layers,
+  Anchor,
+  Eye,
+  Wind,
+  Settings,
 } from 'lucide-react';
 
 export const SERVICES = [
@@ -91,6 +95,51 @@ export const SERVICES = [
     icon: Layers,
     doctorPreference: 'any',
     duration: 30,
+  },
+  {
+    key: 'implants',
+    name: 'Dental Implants',
+    price: 499,
+    unit: 'from AED',
+    icon: Anchor,
+    doctorPreference: 'iqra',
+    duration: 60,
+  },
+  {
+    key: 'veneers',
+    name: 'Veneers',
+    price: 799,
+    unit: 'from AED',
+    icon: Eye,
+    doctorPreference: 'mohamad',
+    duration: 60,
+  },
+  {
+    key: 'invisalign',
+    name: 'Invisalign',
+    price: 599,
+    unit: 'from AED',
+    icon: Wind,
+    doctorPreference: 'mafaza',
+    duration: 45,
+  },
+  {
+    key: 'braces-adjustment',
+    name: 'Braces Adjustment',
+    price: 99,
+    unit: 'from AED',
+    icon: Settings,
+    doctorPreference: 'mafaza',
+    duration: 30,
+  },
+  {
+    key: 'crowns-bridges',
+    name: 'Crowns & Bridges',
+    price: 299,
+    unit: 'from AED',
+    icon: Crown,
+    doctorPreference: 'mohamad',
+    duration: 45,
   },
 ] as const;
 

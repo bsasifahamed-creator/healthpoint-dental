@@ -43,7 +43,7 @@ export function CTASummons({ id }: { id: string }) {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-ink-mid text-lg max-[390px]:text-base leading-[1.65] mb-8 max-[390px]:mb-6 max-w-2xl mx-auto"
         >
-          Book online in 60 seconds. Walk-ins welcome daily 1PM to 9PM. Same-day appointments often available.
+          Book online in 60 seconds. Walk-ins welcome daily 8AM to 8PM. Same-day appointments often available.
         </motion.p>
 
         <motion.div
@@ -98,7 +98,7 @@ export function CTASummons({ id }: { id: string }) {
               <span className="text-sm text-ink-mid text-left">
                 Daily
                 <br />
-                1:00 PM — 9:00 PM
+                8:00 AM — 8:00 PM
               </span>
             </CardContent>
           </Card>

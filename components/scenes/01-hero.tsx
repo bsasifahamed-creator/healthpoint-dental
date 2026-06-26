@@ -57,7 +57,7 @@ export function Hero() {
             className="font-body text-ink-mid text-lg max-[390px]:text-base leading-[1.65] mb-6 max-[390px]:mb-5 max-w-lg"
           >
             DHA-licensed dental clinic with experienced specialists, transparent pricing, and modern equipment. Walk-ins
-            welcome — daily 1PM to 9PM.
+            welcome — daily 8AM to 8PM.
           </motion.p>
 
           <motion.div

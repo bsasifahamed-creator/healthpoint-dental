@@ -4,15 +4,15 @@ export const CLINIC = {
   phone: "+971 58 588 6915",
   whatsapp: "971585886915",
   whatsappUrl: "https://wa.me/971585886915",
-  email: "info@healthpointdental.ae",
+  email: "healthpoint316@gmail.com",
   address:
-    "Office 603, Bedaia Building, Al Barsha St, Al Barsha 1, Dubai, UAE",
+    "Bedaia Building, Office 603, Street 3, Al Barsha First, Dubai, UAE",
   addressShort: "Al Barsha 1, Dubai",
   mapsUrl:
     "https://maps.google.com/?q=Health+Point+Dental+Clinic+Al+Barsha+Dubai",
   mapsEmbed: "https://www.google.com/maps/embed?pb=...",
-  hours: "Daily: 1:00 PM – 9:00 PM",
-  hoursShort: "1PM – 9PM Daily",
+  hours: "Daily: 8:00 AM – 8:00 PM",
+  hoursShort: "8AM – 8PM Daily",
   instagram: "https://www.instagram.com/healthpoint_dental",
   facebook: "https://www.facebook.com/healthpointdubai",
   googleReviewsUrl: "https://g.page/r/healthpointdental/review",
@@ -256,6 +256,137 @@ export const SERVICES = [
       "Final shade check and sensitivity advice",
     ],
   },
+  {
+    id: 10,
+    name: "Dental Implants",
+    slug: "dental-implants",
+    price: 499,
+    priceFrom: true,
+    duration: 90,
+    icon: "",
+    iconSrc: "/icons/Dental Implants.svg",
+    category: "Surgical",
+    description:
+      "Permanent, natural-looking replacements for missing teeth with durable dental implants.",
+    longDesc:
+      "Dental implants act as a strong, durable foundation for crowns or bridges, restoring full function and aesthetics. Each implant is precisely placed to preserve jawbone and facial structure for long-lasting results.",
+    benefits: [
+      "Permanent and natural-feeling replacement",
+      "Preserves jawbone and facial structure",
+      "Long-lasting and easy to maintain",
+    ],
+    process: [
+      "Consultation and 3D imaging assessment",
+      "Surgical placement of the implant fixture",
+      "Healing period for osseointegration",
+      "Fitting of the final crown or bridge",
+    ],
+  },
+  {
+    id: 11,
+    name: "Veneers",
+    slug: "veneers",
+    price: 799,
+    priceFrom: true,
+    duration: 90,
+    icon: "",
+    iconSrc: "/icons/Veneers.svg",
+    category: "Cosmetic",
+    description:
+      "Custom porcelain veneers for a flawless, Hollywood-style smile.",
+    longDesc:
+      "Veneers are ultra-thin porcelain shells bonded to the front of your teeth to correct chipped, stained, or uneven teeth. They create a perfect, uniform smile with minimal preparation and are stain-resistant and durable.",
+    benefits: [
+      "Achieve a perfect, uniform smile",
+      "Stain-resistant and durable",
+      "Immediate improvement in appearance",
+    ],
+    process: [
+      "Smile assessment and veneer design",
+      "Minimal tooth preparation",
+      "Impression and fabrication by the lab",
+      "Bonding and final adjustments for a natural look",
+    ],
+  },
+  {
+    id: 12,
+    name: "Invisalign",
+    slug: "invisalign",
+    price: 599,
+    priceFrom: true,
+    duration: 60,
+    icon: "",
+    iconSrc: "/icons/Invisalign.svg",
+    category: "Orthodontics",
+    description:
+      "Clear, removable aligners for discreet and comfortable smile correction.",
+    longDesc:
+      "Invisalign is the modern alternative to traditional braces. Our certified specialists design clear, removable aligners that straighten your teeth discreetly and comfortably — perfect for professionals and teens alike.",
+    benefits: [
+      "Virtually invisible and removable",
+      "No metal brackets or wires",
+      "Comfortable, customized fit",
+      "Perfect for professionals and teens alike",
+    ],
+    process: [
+      "Invisalign consultation and digital scan",
+      "Custom aligner treatment plan",
+      "Regular aligner changes every 1-2 weeks",
+      "Progress check-ups and refinement",
+    ],
+  },
+  {
+    id: 13,
+    name: "Braces Adjustment",
+    slug: "braces-adjustment",
+    price: 99,
+    priceFrom: true,
+    duration: 30,
+    icon: "",
+    iconSrc: "/icons/Braces Adjustment.svg",
+    category: "Orthodontics",
+    description:
+      "Regular adjustment visits to keep your braces treatment on track.",
+    longDesc:
+      "Regular braces adjustments are essential to keep your treatment on track and ensure the best possible results. Our orthodontists make each visit quick, comfortable, and goal-focused.",
+    benefits: [
+      "Keeps teeth moving efficiently",
+      "Ensures steady alignment progress",
+      "Improves overall treatment comfort",
+    ],
+    process: [
+      "Assessment of current tooth movement",
+      "Adjustment of archwires and brackets",
+      "Check of progress and treatment plan",
+      "Next appointment scheduling",
+    ],
+  },
+  {
+    id: 14,
+    name: "Crowns & Bridges",
+    slug: "crowns-bridges",
+    price: 299,
+    priceFrom: true,
+    duration: 60,
+    icon: "",
+    iconSrc: "/icons/Dental Crown.svg",
+    category: "Restorative",
+    description:
+      "Restore strength and function to damaged or missing teeth with custom crowns and bridges.",
+    longDesc:
+      "Whether you've cracked a tooth or lost one entirely, our custom crowns and bridges blend seamlessly with your natural teeth. Reinforce weak or damaged teeth, fill gaps, and improve your bite and aesthetics.",
+    benefits: [
+      "Reinforces weak or damaged teeth",
+      "Fills gaps caused by missing teeth",
+      "Improves bite and aesthetics",
+    ],
+    process: [
+      "Tooth preparation and impression or scan",
+      "Placement of a temporary restoration if required",
+      "Fabrication of the final crown or bridge by the lab",
+      "Fitting, adjustments, and permanent cementation",
+    ],
+  },
 ] as const;
 
 export const DOCTORS = [
@@ -303,7 +434,7 @@ export const FAQS = [
   {
     question: "Do you accept walk-ins?",
     answer:
-      "Yes! Walk-in patients are always welcome. We're open daily from 1:00 PM to 9:00 PM. For urgent cases, call +971 58 588 6915.",
+      "Yes! Walk-in patients are always welcome. We're open daily from 8:00 AM to 8:00 PM. For urgent cases, call +971 58 588 6915.",
   },
   {
     question: "Is root canal treatment painful?",

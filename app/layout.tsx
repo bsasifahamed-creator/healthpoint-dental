@@ -35,7 +35,7 @@ const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://healthpointdental.ae
 export const metadata: Metadata = {
   title: 'Health Point Dental Clinic — Al Barsha 1, Dubai · DHA Licensed',
   description:
-    'Trusted dental care in Al Barsha 1, Dubai. DHA Licensed. Walk-ins daily 1PM–9PM. Scaling from AED 79.',
+    'Trusted dental care in Al Barsha 1, Dubai. DHA Licensed. Walk-ins daily 8AM–8PM. Scaling from AED 79.',
   metadataBase: new URL(baseUrl),
   alternates: { canonical: '/' },
   openGraph: {
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: 'Health Point Dental Clinic',
     title: 'Health Point Dental Clinic — Al Barsha 1, Dubai · DHA Licensed',
     description:
-      'Trusted dental care in Al Barsha 1, Dubai. DHA Licensed. Walk-ins daily 1PM–9PM. Scaling from AED 79.',
+      'Trusted dental care in Al Barsha 1, Dubai. DHA Licensed. Walk-ins daily 8AM–8PM. Scaling from AED 79.',
     url: '/',
     locale: 'en_AE',
     images: [
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Health Point Dental Clinic — Al Barsha 1, Dubai · DHA Licensed',
     description:
-      'Trusted dental care in Al Barsha 1, Dubai. DHA Licensed. Walk-ins daily 1PM–9PM. Scaling from AED 79.',
+      'Trusted dental care in Al Barsha 1, Dubai. DHA Licensed. Walk-ins daily 8AM–8PM. Scaling from AED 79.',
   },
   robots: {
     index: true,

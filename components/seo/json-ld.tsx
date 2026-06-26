@@ -4,13 +4,13 @@ const organization = {
   name: 'Health Point Dental Clinic',
   url: 'https://healthpointdental.ae',
   logo: 'https://healthpointdental.ae/health%20point%20png%20logo.png',
-  description: 'Trusted dental care in Al Barsha 1, Dubai. DHA Licensed. Walk-ins daily 1PM–9PM.',
+  description: 'Trusted dental care in Al Barsha 1, Dubai. DHA Licensed. Walk-ins daily 8AM–8PM.',
   image: 'https://healthpointdental.ae/health%20point%20png%20logo.png',
-  email: 'info@healthpointdental.ae',
+  email: 'healthpoint316@gmail.com',
   telephone: '+971585886915',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Office 603, Bedaia Building, Al Barsha 1',
+    streetAddress: 'Office 603, Bedaia Building, Al Barsha First',
     addressLocality: 'Dubai',
     addressCountry: 'AE',
   },
@@ -18,8 +18,8 @@ const organization = {
     {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-      opens: '13:00',
-      closes: '21:00',
+      opens: '08:00',
+      closes: '20:00',
     },
   ],
   priceRange: 'AED 79 – AED 2,500',
@@ -47,7 +47,7 @@ const faq = {
       name: 'What are the clinic hours?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Health Point Dental is open daily from 1:00 PM to 9:00 PM, including weekends. Walk-ins are welcome.',
+        text: 'Health Point Dental is open daily from 8:00 AM to 8:00 PM, including weekends. Walk-ins are welcome.',
       },
     },
     {

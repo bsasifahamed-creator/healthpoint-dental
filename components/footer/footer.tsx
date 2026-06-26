@@ -9,6 +9,8 @@ import {
   ShieldCheck,
   ArrowUpRight,
   Mail,
+  Facebook,
+  Instagram,
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -49,6 +51,35 @@ export function Footer() {
               <ShieldCheck className="size-3.5 text-trust-blue" strokeWidth={1.5} aria-hidden />
               <span className="font-mono text-[10px] font-semibold text-trust-blue tracking-wide">DHA LICENSED</span>
             </div>
+            <div className="flex items-center gap-2 mt-4">
+              <a
+                href="https://www.facebook.com/healthpointdubai"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="glass-pill flex size-9 items-center justify-center rounded-full text-ink-mid hover:text-teal hover:border-teal/30 transition-all"
+              >
+                <Facebook className="size-4" strokeWidth={1.5} />
+              </a>
+              <a
+                href="https://www.instagram.com/healthpoint_dental"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="glass-pill flex size-9 items-center justify-center rounded-full text-ink-mid hover:text-teal hover:border-teal/30 transition-all"
+              >
+                <Instagram className="size-4" strokeWidth={1.5} />
+              </a>
+              <a
+                href="https://wa.me/971585886915"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="glass-pill flex size-9 items-center justify-center rounded-full text-ink-mid hover:text-teal hover:border-teal/30 transition-all"
+              >
+                <MessageCircle className="size-4" strokeWidth={1.5} />
+              </a>
+            </div>
           </div>
 
           <div>
@@ -75,7 +106,7 @@ export function Footer() {
             </a>
             <div className="flex items-start gap-2 text-ink-mid">
               <Clock className="size-4 mt-0.5 shrink-0" strokeWidth={1.5} aria-hidden />
-              <span className="text-sm leading-[1.6]">Daily 1:00 PM — 9:00 PM</span>
+              <span className="text-sm leading-[1.6]">Daily 8:00 AM — 8:00 PM</span>
             </div>
           </div>
 
@@ -108,11 +139,11 @@ export function Footer() {
               />
             </a>
             <a
-              href="mailto:contact@healthpoint.ae"
+              href="mailto:healthpoint316@gmail.com"
               className="flex items-center gap-2 text-ink-mid hover:text-teal transition-colors group"
             >
               <Mail className="size-4 shrink-0" strokeWidth={1.5} aria-hidden />
-              <span className="text-sm">contact@healthpoint.ae</span>
+              <span className="text-sm">healthpoint316@gmail.com</span>
               <ArrowUpRight
                 className="size-3 opacity-0 group-hover:opacity-100 transition-opacity"
                 strokeWidth={1.5}
