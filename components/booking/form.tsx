@@ -45,8 +45,38 @@ export function BookingForm() {
 
   const selectedService = mergedServices.find((s) => s.key === serviceKey);
 
-  function handleSendToWhatsApp() {
+  async function handleSendToWhatsApp() {
     if (!selectedService) return;
+    
+    // Create a simple booking record (no time slot selection in this flow)
+    const today = new Date();
+    const bookingData = {
+      serviceKey: selectedService.key,
+      patientName: name.trim() || 'WhatsApp Walk-in',
+      patientPhone: '',
+      patientEmail: '',
+      patientNotes: preferredTime.trim() || 'Requested via website booking button',
+      date: today.toISOString().split('T')[0],
+      time: '13:00', // Default slot, will be adjusted via WhatsApp
+    };
+
+    try {
+      // Save booking to database first
+      const res = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(bookingData),
+      });
+      
+      if (!res.ok) {
+        console.error('Failed to save booking');
+      }
+    } catch (err) {
+      console.error('Booking save error:', err);
+      // Continue anyway - WhatsApp will still work
+    }
+
+    // Now open WhatsApp with the message
     const template = WHATSAPP_TEMPLATES[selectedService.key as keyof typeof WHATSAPP_TEMPLATES];
     if (!template) {
       console.error('No WhatsApp template for service:', selectedService.key);
