@@ -2,12 +2,12 @@
 
 const CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.supabase.co https://www.googletagmanager.com https://va.vercel-scripts.com",
+  "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.supabase.co https://www.googletagmanager.com https://va.vercel-scripts.com https://cdn.jsdelivr.net",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
   "img-src 'self' data: blob: https://*.supabase.co https://maps.gstatic.com https://maps.googleapis.com",
   "frame-src 'self' https://*.supabase.co",
-  "connect-src 'self' https://*.supabase.co https://*.vercel.live https://va.vercel-scripts.com",
+  "connect-src 'self' blob: https://*.supabase.co https://*.vercel.live https://va.vercel-scripts.com https://raw.githack.com https://raw.githubusercontent.com",
   "media-src 'self'",
   "object-src 'none'",
   "base-uri 'self'",
