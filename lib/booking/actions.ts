@@ -3,9 +3,7 @@
 import { parse } from 'date-fns';
 import { revalidatePath } from 'next/cache';
 import { getSupabaseAdmin } from '@/lib/supabase/server';
-import { sendBookingEmails } from '@/lib/notifications/email';
 import { sendBookingWhatsApp } from '@/lib/notifications/whatsapp';
-import type { BookingRow } from '@/lib/notifications/types';
 import { bookingSchema, type BookingInput } from './schema';
 import { getServiceByKey } from './services';
 import { generateDailySlots, isSlotBookable, slotToTimestamp } from './slots';
@@ -118,8 +116,8 @@ export async function createBooking(input: BookingInput) {
   return { ok: false, error: 'This slot was just taken. Please pick another time.', booking: null };
 }
 
-async function sendBookingNotifications(booking: BookingRow) {
-  await Promise.all([sendBookingEmails(booking), sendBookingWhatsApp(booking)]);
+async function sendBookingNotifications(booking: any) {
+  await sendBookingWhatsApp(booking).catch((err) => console.error('WhatsApp notify failed:', err));
 }
 
 export async function cancelBooking(bookingId: string) {
