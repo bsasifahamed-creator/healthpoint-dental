@@ -1,11 +1,7 @@
 'use client';
 
-import { MeshGradient } from '@paper-design/shaders-react';
-
 /**
- * Fixed-position MeshGradient stack used as the global backdrop for every
- * admin route. Mirrors the hero shader so /admin feels visually part of
- * the same product surface as the marketing site.
+ * Fixed-position gradient backdrop used for every admin route.
  */
 export function AdminBackground() {
   return (
@@ -13,15 +9,19 @@ export function AdminBackground() {
       aria-hidden
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
     >
-      <MeshGradient
+      <div
         className="absolute inset-0 h-full w-full"
-        colors={['#f3fffb', '#d4f8ea', '#c9f3d9', '#ddffd2', '#eefcff']}
-        speed={0.22}
+        style={{
+          background:
+            'radial-gradient(70% 60% at 20% 30%, #d4f8ea 0%, #c9f3d9 35%, #ddffd2 65%, #eefcff 100%)',
+        }}
       />
-      <MeshGradient
+      <div
         className="absolute inset-0 h-full w-full opacity-45"
-        colors={['#84e1bc', '#9be37f', '#7ed321', '#6dd3af']}
-        speed={0.18}
+        style={{
+          background:
+            'radial-gradient(60% 50% at 80% 40%, #84e1bc 0%, #9be37f 40%, #7ed321 75%, #6dd3af 100%)',
+        }}
       />
       <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_78%_26%,rgba(126,211,33,0.28),rgba(126,211,33,0.06)_45%,transparent_72%)]" />
       <div className="absolute inset-0 bg-gradient-to-b from-white/14 via-white/0 to-white/24" />

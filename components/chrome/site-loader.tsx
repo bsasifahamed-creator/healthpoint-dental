@@ -3,8 +3,6 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { ShaderErrorBoundary } from '@/components/ui/shader-error-boundary';
-import { MeshGradient } from '@paper-design/shaders-react';
 
 /**
  * Glassy splash loader — reuses the exact same MeshGradient stack as the
@@ -70,18 +68,20 @@ export function SiteLoader() {
           role="status"
           aria-live="polite"
         >
-          <ShaderErrorBoundary>
-            <MeshGradient
-              className="absolute inset-0 h-full w-full"
-              colors={['#f3fffb', '#d4f8ea', '#c9f3d9', '#ddffd2', '#eefcff']}
-              speed={0.26}
-            />
-            <MeshGradient
-              className="absolute inset-0 h-full w-full opacity-55"
-              colors={['#84e1bc', '#9be37f', '#7ed321', '#6dd3af']}
-              speed={0.2}
-            />
-          </ShaderErrorBoundary>
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'radial-gradient(70% 60% at 20% 30%, #d4f8ea 0%, #c9f3d9 35%, #ddffd2 65%, #eefcff 100%)',
+            }}
+          />
+          <div
+            className="absolute inset-0 opacity-55"
+            style={{
+              background:
+                'radial-gradient(60% 50% at 80% 40%, #84e1bc 0%, #9be37f 40%, #7ed321 75%, #6dd3af 100%)',
+            }}
+          />
           <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_78%_26%,rgba(126,211,33,0.32),rgba(126,211,33,0.08)_45%,transparent_72%)]" />
           <div className="absolute inset-0 bg-gradient-to-b from-white/12 via-white/0 to-white/20" />
           <div

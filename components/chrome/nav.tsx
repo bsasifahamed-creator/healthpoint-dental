@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { Phone, MessageCircle, Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MeshGradient } from '@paper-design/shaders-react';
 import { useBookingStore } from '@/lib/booking-store';
 import { LiquidButton } from '@/components/ui/liquid-glass-button';
 
@@ -116,10 +115,12 @@ export function Nav() {
         <div className="fixed inset-0 z-[55] md:hidden">
           <div className="absolute inset-0 bg-black/30" />
           <div className="absolute inset-0 pt-20 max-[390px]:pt-16 overflow-y-auto">
-          <MeshGradient
+          <div
             className="absolute inset-0 h-full w-full"
-            colors={['#f3fffb', '#d4f8ea', '#c9f3d9', '#ddffd2', '#eefcff']}
-            speed={0.3}
+            style={{
+              background:
+                'radial-gradient(70% 60% at 20% 30%, #d4f8ea 0%, #c9f3d9 35%, #ddffd2 65%, #eefcff 100%)',
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-white/40" />
           <div className="relative px-6 max-[390px]:px-4 pt-12 pb-8">

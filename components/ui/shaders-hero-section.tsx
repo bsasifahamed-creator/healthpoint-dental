@@ -1,7 +1,5 @@
 'use client';
 
-import { ShaderErrorBoundary } from '@/components/ui/shader-error-boundary';
-import { MeshGradient, PulsingBorder } from '@paper-design/shaders-react';
 import { motion } from 'framer-motion';
 import type React from 'react';
 import { useEffect, useRef, useState } from 'react';
@@ -62,13 +60,13 @@ export function ShaderBackground({ children }: ShaderBackgroundProps) {
         </defs>
       </svg>
 
-      <ShaderErrorBoundary>
-        <MeshGradient
-          className="absolute inset-0 h-full w-full"
-          colors={['#f3fffb', '#d4f8ea', '#c9f3d9', '#ddffd2', '#eefcff']}
-          speed={isActive ? 0.4 : 0.26}
-        />
-      </ShaderErrorBoundary>
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(70% 60% at 20% 30%, #d4f8ea 0%, #c9f3d9 35%, #ddffd2 65%, #eefcff 100%)',
+        }}
+      />
 
       <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_78%_26%,rgba(126,211,33,0.32),rgba(126,211,33,0.08)_45%,transparent_72%)]" />
       <div className="absolute inset-0 bg-gradient-to-b from-white/12 via-white/0 to-white/20" />
@@ -91,24 +89,9 @@ export function ShaderBackground({ children }: ShaderBackgroundProps) {
 
 export function PulsingCircle() {
   return (
-    <div className="absolute bottom-8 right-8 z-30">
+      <div className="absolute bottom-8 right-8 z-30">
       <div className="relative flex h-20 w-20 items-center justify-center">
-        <PulsingBorder
-          colors={['#00a6a6', '#7ed321', '#8ddfd8', '#6bcff6', '#86efac']}
-          colorBack="#00000000"
-          speed={1.4}
-          roundness={1}
-          thickness={0.12}
-          softness={0.24}
-          intensity={4.5}
-          pulse={0.12}
-          scale={0.66}
-          style={{
-            width: '60px',
-            height: '60px',
-            borderRadius: '50%',
-          }}
-        />
+        <div className="animate-pulse rounded-full border-2 border-teal/40" style={{ width: '60px', height: '60px' }} />
 
         <motion.svg
           className="absolute inset-0 h-full w-full"
