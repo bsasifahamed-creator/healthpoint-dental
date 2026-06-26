@@ -50,22 +50,6 @@ function FallbackTooth({ simple = false }: { simple?: boolean }) {
   );
 }
 
-function MobileTooth() {
-  return (
-    <group>
-      <directionalLight position={[0, 4, 5]} intensity={1.8} />
-      <directionalLight position={[3, 1, -4]} intensity={0.8} color="#7ED321" />
-      <directionalLight position={[-2, 1, -4]} intensity={0.6} color="#00A6A6" />
-      <hemisphereLight color="#FFFFFF" groundColor="#E7EDF2" intensity={0.6} />
-      <Environment preset="apartment" background={false} resolution={128} />
-      <StageErrorBoundary fallback={<FallbackTooth simple />}>
-        <ToothModel />
-      </StageErrorBoundary>
-      <Orchestrator />
-    </group>
-  );
-}
-
 export function ToothStage() {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -78,29 +62,7 @@ export function ToothStage() {
   }, []);
 
   if (isMobile) {
-    return (
-      <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 5 }} aria-hidden>
-        <Canvas
-          dpr={[1, 1.5]}
-          gl={{
-            antialias: true,
-            alpha: true,
-            powerPreference: 'high-performance',
-            toneMapping: THREE.ACESFilmicToneMapping,
-            toneMappingExposure: 0.9,
-            outputColorSpace: THREE.SRGBColorSpace,
-          }}
-          camera={{ position: [0, 0, 6], fov: 40 }}
-          performance={{ min: 0.5 }}
-        >
-          <Suspense fallback={null}>
-            <MobileTooth />
-          </Suspense>
-          <AdaptiveDpr pixelated />
-          <AdaptiveEvents />
-        </Canvas>
-      </div>
-    );
+    return null;
   }
 
   return (
