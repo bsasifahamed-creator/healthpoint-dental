@@ -1,68 +1,38 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./pages/**/*.{ts,tsx}",
-  ],
+  content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        "brand-green": "#7ED321",
-        "brand-teal": "#00A6A6",
-        "brand-teal-dark": "#008080",
-        "brand-teal-light": "#e0f5f5",
-        "brand-dark": "#1a2332",
-        "brand-text": "#333333",
-        "brand-muted": "#6B6B6B",
-        "brand-bg": "#F5F7F9",
-        "brand-green-light": "#eef7d8",
+        bg: '#FFFFFF',
+        'surface-1': '#FAFBFC',
+        'surface-2': '#F0F4F7',
+        'surface-3': '#E5EBF0',
+        teal: '#00A6A6',
+        'teal-soft': '#E6F7F7',
+        'teal-dim': '#0A8C8C',
+        green: '#7ED321',
+        'green-soft': '#F0F9E2',
+        'green-dim': '#6AB31C',
+        ink: '#0A0E13',
+        'ink-mid': '#0F1419',
+        'ink-dim': '#1F2937',
+        'trust-blue': '#1E40AF',
+        'warning-amber': '#F59E0B',
+        stroke: 'rgba(15, 20, 25, 0.08)',
+        'stroke-strong': 'rgba(15, 20, 25, 0.14)',
       },
       fontFamily: {
-        heading: ["Montserrat", "sans-serif"],
-        sub: ["Oswald", "sans-serif"],
-        body: ["Roboto", "sans-serif"],
+        display: ['var(--font-display)', 'sans-serif'],
+        body: ['var(--font-body)', 'sans-serif'],
+        mono: ['var(--font-mono)', 'monospace'],
       },
-      animation: {
-        float: "float 4s ease-in-out infinite",
-        marquee: "marquee 30s linear infinite",
-        ripple: "ripple 2s ease-in-out infinite",
-        "fade-up": "fadeUp 0.6s ease forwards",
-        "slide-left": "slideLeft 0.6s ease forwards",
-        "slide-right": "slideRight 0.6s ease forwards",
-        "count-up": "countUp 2s ease forwards",
-      },
-      keyframes: {
-        float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-12px)" },
-        },
-        marquee: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
-        ripple: {
-          "0%": { transform: "scale(0.9)", opacity: "0.8" },
-          "70%": { transform: "scale(1.1)", opacity: "0.2" },
-          "100%": { transform: "scale(1.2)", opacity: "0" },
-        },
-        fadeUp: {
-          "0%": { opacity: "0", transform: "translateY(20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        slideLeft: {
-          "0%": { opacity: "0", transform: "translateX(40px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        slideRight: {
-          "0%": { opacity: "0", transform: "translateX(-40px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        countUp: {
-          "0%": { opacity: "0", transform: "translateY(10px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
+      boxShadow: {
+        soft: '0 1px 3px rgba(15, 20, 25, 0.04), 0 4px 12px rgba(15, 20, 25, 0.04)',
+        medium: '0 4px 12px rgba(15, 20, 25, 0.06), 0 12px 32px rgba(15, 20, 25, 0.06)',
+        'card-hover':
+          '0 8px 24px rgba(0, 166, 166, 0.12), 0 16px 48px rgba(15, 20, 25, 0.08)',
       },
     },
   },
@@ -70,4 +40,3 @@ const config: Config = {
 };
 
 export default config;
-

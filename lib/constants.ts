@@ -30,7 +30,8 @@ export const SERVICES = [
     price: 79,
     priceFrom: false,
     duration: 45,
-    icon: "🦷",
+    icon: "",
+    iconSrc: "/icons/Scaling and polishing.svg",
     category: "Preventive",
     description:
       "Professional cleaning to remove plaque, tartar and stains. Keeps gums healthy and breath fresh.",
@@ -55,7 +56,8 @@ export const SERVICES = [
     price: 399,
     priceFrom: true,
     duration: 90,
-    icon: "😁",
+    icon: "",
+    iconSrc: "/icons/Braces Installation.svg",
     category: "Orthodontics",
     description:
       "Correct misaligned teeth and improve your bite with professional orthodontic braces.",
@@ -80,7 +82,8 @@ export const SERVICES = [
     price: 99,
     priceFrom: true,
     duration: 30,
-    icon: "🔧",
+    icon: "",
+    iconSrc: "/icons/Tooth Extraction.svg",
     category: "Surgical",
     description: "Safe and gentle tooth removal using modern techniques.",
     longDesc:
@@ -104,7 +107,8 @@ export const SERVICES = [
     price: 399,
     priceFrom: true,
     duration: 60,
-    icon: "💉",
+    icon: "",
+    iconSrc: "/icons/Root Canal Treatment.svg",
     category: "Restorative",
     description:
       "Save infected or damaged teeth with near-painless root canal therapy.",
@@ -129,7 +133,8 @@ export const SERVICES = [
     price: 999,
     priceFrom: false,
     duration: 120,
-    icon: "✨",
+    icon: "",
+    iconSrc: "/icons/Hollywood Smile.svg",
     category: "Cosmetic",
     description:
       "Transform your smile with composite veneers — natural-looking and beautifully crafted.",
@@ -154,7 +159,8 @@ export const SERVICES = [
     price: 299,
     priceFrom: false,
     duration: 60,
-    icon: "👑",
+    icon: "",
+    iconSrc: "/icons/Dental Crown.svg",
     category: "Restorative",
     description:
       "Restore damaged teeth with precision-fitted crowns that look and feel natural.",
@@ -179,7 +185,8 @@ export const SERVICES = [
     price: 249,
     priceFrom: true,
     duration: 60,
-    icon: "🦴",
+    icon: "",
+    iconSrc: "/icons/Denture.svg",
     category: "Prosthetic",
     description:
       "Custom removable dentures that restore your smile and chewing function.",
@@ -204,7 +211,8 @@ export const SERVICES = [
     price: 139,
     priceFrom: true,
     duration: 30,
-    icon: "🔬",
+    icon: "",
+    iconSrc: "/icons/Composite Filling.svg",
     category: "Restorative",
     description:
       "Tooth-colored fillings that blend seamlessly with your natural teeth.",
@@ -229,7 +237,8 @@ export const SERVICES = [
     price: 299,
     priceFrom: false,
     duration: 60,
-    icon: "⚡",
+    icon: "",
+    iconSrc: "/icons/Teeth Whitening.svg",
     category: "Cosmetic",
     description:
       "Professional whitening for a brighter smile. Results in one session.",
