@@ -56,15 +56,16 @@ export function BookingForm() {
       unit: selectedService.unit,
     });
     const url = buildWhatsAppUrl(message);
-    window.open(url, '_blank', 'noopener,noreferrer');
-    // Close drawer after a beat so the new tab opens cleanly first
+    // Use location.href for better mobile compatibility
+    window.location.href = url;
+    // Close drawer after delay
     setTimeout(() => {
       close();
       setStep(0);
       setServiceKey(null);
       setName('');
       setPreferredTime('');
-    }, 250);
+    }, 500);
   }
 
   return (
@@ -215,7 +216,7 @@ export function BookingForm() {
                   placeholder="e.g. Tomorrow evening, or Saturday afternoon"
                 />
                 <p className="mt-1.5 text-[11px] leading-snug text-ink-mid">
-                  We&apos;re open daily 1 PM – 9 PM. Skip this and we&apos;ll suggest the next free
+                  We&apos;re open daily 8 AM – 8 PM. Skip this and we&apos;ll suggest the next free
                   slot.
                 </p>
               </div>
