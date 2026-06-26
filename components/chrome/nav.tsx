@@ -11,23 +11,26 @@ import { AnimatePresence, motion } from 'motion/react';
 function MobileMenu({ onClose, openBooking }: { onClose: () => void; openBooking: () => void }) {
   const touchStartX = useRef<number>(0);
   const touchCurrentX = useRef<number>(0);
+  const [touchOffset, setTouchOffset] = useState(0);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
     touchCurrentX.current = 0;
+    setTouchOffset(0);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
     touchCurrentX.current = e.touches[0].clientX - touchStartX.current;
+    setTouchOffset(Math.max(0, touchCurrentX.current));
   };
 
   const handleTouchEnd = () => {
-    const swipeDistance = touchCurrentX.current;
-    if (swipeDistance > 80) {
+    if (touchCurrentX.current > 80) {
       onClose();
     }
     touchStartX.current = 0;
     touchCurrentX.current = 0;
+    setTouchOffset(0);
   };
 
   return (
@@ -35,11 +38,12 @@ function MobileMenu({ onClose, openBooking }: { onClose: () => void; openBooking
       initial={{ x: '100%' }}
       animate={{ x: 0 }}
       exit={{ x: '100%' }}
-      transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+      transition={{ type: 'spring', damping: 30, stiffness: 300, mass: 0.8 }}
       className="fixed inset-0 z-[56] md:hidden"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
+      style={{ x: touchOffset > 0 ? touchOffset : undefined }}
     >
       <div
         className="absolute inset-0 h-full w-full"
@@ -52,37 +56,37 @@ function MobileMenu({ onClose, openBooking }: { onClose: () => void; openBooking
       <div className="relative h-full overflow-y-auto px-6 max-[390px]:px-4 pt-24 pb-8">
         <ul className="flex flex-col gap-6 max-[390px]:gap-5 text-lg max-[390px]:text-base font-medium text-ink pt-4">
           <li>
-            <a href="/" onClick={onClose}>
+            <a href="/" onClick={onClose} className="block py-2">
               Home
             </a>
           </li>
           <li>
-            <a href="#scene-services" onClick={onClose}>
+            <a href="#scene-services" onClick={onClose} className="block py-2">
               Services
             </a>
           </li>
           <li>
-            <a href="#scene-why" onClick={onClose}>
+            <a href="#scene-why" onClick={onClose} className="block py-2">
               Why Us
             </a>
           </li>
           <li>
-            <a href="#scene-team" onClick={onClose}>
+            <a href="#scene-team" onClick={onClose} className="block py-2">
               Team
             </a>
           </li>
           <li>
-            <a href="#contact" onClick={onClose}>
+            <a href="#contact" onClick={onClose} className="block py-2">
               Contact
             </a>
           </li>
           <li>
-            <Link href="/blog" onClick={onClose}>
+            <Link href="/blog" onClick={onClose} className="block py-2">
               Blog
             </Link>
           </li>
           <li className="pt-6 border-t border-stroke">
-            <a href="tel:+971585886915" className="flex items-center gap-2 text-teal">
+            <a href="tel:+971585886915" className="flex items-center gap-2 text-teal py-2">
               <Phone className="size-5" strokeWidth={1.5} aria-hidden />
               +971 58 588 6915
             </a>
@@ -92,7 +96,7 @@ function MobileMenu({ onClose, openBooking }: { onClose: () => void; openBooking
               href="https://wa.me/971585886915"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-green-dim"
+              className="flex items-center gap-2 text-green-dim py-2"
               onClick={onClose}
             >
               <MessageCircle className="size-5" strokeWidth={1.5} aria-hidden />

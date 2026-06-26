@@ -61,20 +61,15 @@ export function BookingForm() {
     });
     const url = buildWhatsAppUrl(message);
     
-    // Try multiple methods to open WhatsApp
     try {
-      // First try opening in new tab (desktop)
       const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
-      // If popup blocked or fails, fallback to location.href
       if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
         window.location.href = url;
       }
     } catch (err) {
-      // Fallback to direct navigation
       window.location.href = url;
     }
     
-    // Close drawer after delay
     setTimeout(() => {
       close();
       setStep(0);
