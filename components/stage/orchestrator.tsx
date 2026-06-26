@@ -8,7 +8,7 @@ import * as THREE from 'three';
 const VEC = new THREE.Vector3();
 const EULER = new THREE.Euler(0, 0, 0, 'YXZ');
 
-export function Orchestrator() {
+export function Orchestrator({ baseY }: { baseY?: number }) {
   // We read `scene` from the useFrame state on every tick rather than via
   // `useThree()` at render time. This keeps the component immune to any
   // brief context-timing edge case across HMR or Suspense resumes — by the
@@ -25,7 +25,7 @@ export function Orchestrator() {
   });
   const rotation = useRef({ x: 0, y: 0, z: 0 });
   const rotationInitialized = useRef(false);
-  const basePosition = useRef({ x: initial.px, y: initial.py, z: initial.pz });
+  const basePosition = useRef({ x: initial.px, y: baseY ?? initial.py, z: initial.pz });
   const cursor = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -72,7 +72,7 @@ export function Orchestrator() {
       rotation.current.y = 0;
       rotation.current.z = 0;
       basePosition.current.x = target.current.px;
-      basePosition.current.y = target.current.py;
+      basePosition.current.y = baseY ?? target.current.py;
       basePosition.current.z = target.current.pz;
       tooth.position.set(basePosition.current.x, basePosition.current.y, basePosition.current.z);
       tooth.scale.setScalar(target.current.scale);
