@@ -6,8 +6,8 @@ import { CursorLightProvider } from '@/components/providers/cursor-light-provide
 import { BookingDrawer } from '@/components/booking/drawer';
 import { DesktopOnly } from '@/components/layout/DesktopOnly';
 import { LiquidEffectAnimation } from '@/components/ui/liquid-effect-animation';
-import { Chatbot } from '@/components/chrome/chatbot';
 import { SiteLoader } from '@/components/chrome/site-loader';
+import { LayoutClient } from '@/components/layout/layout-client';
 import { JsonLd } from '@/components/seo/json-ld';
 import './globals.css';
 
@@ -78,9 +78,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </DesktopOnly>
         <CursorLightProvider />
         <LenisProvider>
-          <div className="relative z-10">{children}</div>
+          <LayoutClient>
+            {children}
+          </LayoutClient>
           <BookingDrawer />
-          <Chatbot />
         </LenisProvider>
         <SiteLoader />
         <Toaster theme="light" richColors position="top-center" />

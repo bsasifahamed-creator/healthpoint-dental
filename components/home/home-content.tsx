@@ -6,7 +6,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useScrollState } from '@/lib/scroll-store';
 import { useIsDesktop } from '@/lib/hooks/use-is-desktop';
-import { Nav } from '@/components/chrome/nav';
 import { Hero } from '@/components/scenes/01-hero';
 import { Trust } from '@/components/scenes/02-trust';
 import { Services } from '@/components/scenes/03-services';
@@ -151,7 +150,6 @@ export function HomeContent({
   return (
     <ShaderBackground>
       <main className="relative bg-transparent">
-        <Nav />
         <div
           aria-hidden
           className="pointer-events-none absolute right-[-4vw] top-[8vh] z-[3] select-none opacity-30 md:left-[50vw] md:right-auto md:top-[18vh] md:opacity-100"

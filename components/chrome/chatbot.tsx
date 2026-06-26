@@ -19,19 +19,11 @@ export function Chatbot() {
         <span
           aria-hidden
           className="pointer-events-none absolute -inset-px rounded-full"
-          style={{ boxShadow: '0 0 0 0 rgba(37,211,102,0.45)', animation: 'chatbotPulse 2s infinite' }}
+          style={{ boxShadow: '0 0 0 0 rgba(37,211,102,0.3)' }}
         />
         <MessageCircle className="size-5 text-white" strokeWidth={2.4} aria-hidden />
         <span className="hidden tracking-wide sm:inline">Chat with us</span>
       </a>
-
-      <style jsx global>{`
-        @keyframes chatbotPulse {
-          0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.45); }
-          70% { box-shadow: 0 0 0 18px rgba(37,211,102,0); }
-          100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
-        }
-      `}</style>
     </>
   );
 }

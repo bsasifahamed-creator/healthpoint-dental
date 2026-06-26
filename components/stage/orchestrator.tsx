@@ -79,10 +79,9 @@ export function Orchestrator({ baseY }: { baseY?: number }) {
       rotationInitialized.current = true;
     }
 
-    // Roll to the right side during hero scroll.
+    // Move tooth to the right during hero scroll (keep rotation unchanged).
     const rollIn = THREE.MathUtils.smoothstep(heroProgress, 0, 1);
     const rightOffset = rollIn * 1.6;
-    const desiredXRot = rollIn * Math.PI * 0.5;
     const targetX = basePosition.current.x + rightOffset;
     tooth.position.x += (targetX - tooth.position.x) * positionK;
     tooth.position.y += (basePosition.current.y - tooth.position.y) * positionK;
@@ -98,7 +97,8 @@ export function Orchestrator({ baseY }: { baseY?: number }) {
     const scrollYaw = heroYaw + restYaw;
     const cursorYaw = cursor.current.x * Math.PI * 0.03;
     const desiredY = scrollYaw + cursorYaw;
-    const desiredZ = desiredXRot;
+    // Keep roll neutral to prevent right-leaning appearance.
+    const desiredZ = 0;
 
     rotation.current.x = THREE.MathUtils.lerp(rotation.current.x, desiredX, rotationK);
     rotation.current.y = THREE.MathUtils.lerp(rotation.current.y, desiredY, yawK);

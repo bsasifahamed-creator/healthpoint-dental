@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowUpRight, Calendar, Clock, Lightbulb } from 'lucide-react';
 import type { Metadata } from 'next';
-import { Nav } from '@/components/chrome/nav';
 import { Footer } from '@/components/footer/footer';
 import { ShaderBackground } from '@/components/ui/shaders-hero-section';
 import { blogPosts, getPostBySlug, getRelatedPosts } from '@/lib/blog/posts';
@@ -41,7 +40,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   return (
     <ShaderBackground>
       <main className="relative bg-transparent">
-        <Nav />
 
         <section className="relative z-10 px-6 pb-8 pt-28 lg:px-12 lg:pb-12 lg:pt-32">
           <div className="mx-auto max-w-4xl">

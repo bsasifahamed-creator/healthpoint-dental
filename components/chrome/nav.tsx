@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useBookingStore } from '@/lib/booking-store';
 import { LiquidButton } from '@/components/ui/liquid-glass-button';
 
-export function Nav() {
+export function Nav({ isAdmin }: { isAdmin?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const open = useBookingStore((s) => s.open);
@@ -96,6 +96,7 @@ export function Nav() {
             </li>
           </ul>
 
+          {!isAdmin && (
           <div className="hidden md:flex items-center gap-3">
             <a
               href="tel:+971585886915"
@@ -108,6 +109,7 @@ export function Nav() {
               Book Now
             </LiquidButton>
           </div>
+          )}
 
           <button
             type="button"
@@ -167,6 +169,8 @@ export function Nav() {
                 Blog
               </Link>
             </li>
+            {!isAdmin && (
+            <>
             <li className="pt-6 border-t border-stroke">
               <a href="tel:+971585886915" className="flex items-center gap-2 text-teal">
                 <Phone className="size-5" strokeWidth={1.5} aria-hidden />
@@ -197,6 +201,8 @@ export function Nav() {
                 Book Now
               </LiquidButton>
             </li>
+            </>
+            )}
           </ul>
         </div>
         </div>

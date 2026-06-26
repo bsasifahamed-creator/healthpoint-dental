@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { Calendar, Clock, ArrowUpRight } from 'lucide-react';
-import { Nav } from '@/components/chrome/nav';
 import { Footer } from '@/components/footer/footer';
 import { ShaderBackground } from '@/components/ui/shaders-hero-section';
 import { blogPosts as hardcodedPosts } from '@/lib/blog/posts';
@@ -51,7 +50,6 @@ export default async function BlogPage() {
   return (
     <ShaderBackground>
       <main className="relative bg-transparent">
-        <Nav />
 
         <section className="relative z-10 px-6 pb-12 pt-28 lg:px-12 lg:pb-16 lg:pt-34">
           <div className="mx-auto max-w-7xl">
