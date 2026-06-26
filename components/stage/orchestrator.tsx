@@ -79,9 +79,10 @@ export function Orchestrator({ baseY }: { baseY?: number }) {
       rotationInitialized.current = true;
     }
 
-    // Move tooth to the right AFTER hero section (not during).
+    // Move tooth to the right AFTER hero section (desktop only).
+    const isDesktop = typeof window !== 'undefined' ? window.innerWidth >= 768 : true;
     const afterHero = THREE.MathUtils.clamp((scrollY - heroSpan) / heroSpan, 0, 1);
-    const moveRight = THREE.MathUtils.smoothstep(afterHero, 0, 1);
+    const moveRight = isDesktop ? THREE.MathUtils.smoothstep(afterHero, 0, 1) : 0;
     const rightOffset = moveRight * 1.0;
     const targetX = basePosition.current.x + rightOffset;
     tooth.position.x += (targetX - tooth.position.x) * positionK;

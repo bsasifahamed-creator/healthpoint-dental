@@ -10,7 +10,7 @@ export function LayoutClient({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <Nav isAdmin={isAdmin} />
+      {!isAdmin && <Nav />}
       <div className="relative z-10">{children}</div>
       {!isAdmin && <Chatbot />}
     </>
