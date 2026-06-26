@@ -47,7 +47,11 @@ export function BookingForm() {
 
   function handleSendToWhatsApp() {
     if (!selectedService) return;
-    const template = WHATSAPP_TEMPLATES[selectedService.key as ServiceKey];
+    const template = WHATSAPP_TEMPLATES[selectedService.key as keyof typeof WHATSAPP_TEMPLATES];
+    if (!template) {
+      console.error('No WhatsApp template for service:', selectedService.key);
+      return;
+    }
     const message = template({
       name: name.trim(),
       preferredTime: preferredTime.trim(),
@@ -56,8 +60,20 @@ export function BookingForm() {
       unit: selectedService.unit,
     });
     const url = buildWhatsAppUrl(message);
-    // Use location.href for better mobile compatibility
-    window.location.href = url;
+    
+    // Try multiple methods to open WhatsApp
+    try {
+      // First try opening in new tab (desktop)
+      const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+      // If popup blocked or fails, fallback to location.href
+      if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+        window.location.href = url;
+      }
+    } catch (err) {
+      // Fallback to direct navigation
+      window.location.href = url;
+    }
+    
     // Close drawer after delay
     setTimeout(() => {
       close();
@@ -65,7 +81,7 @@ export function BookingForm() {
       setServiceKey(null);
       setName('');
       setPreferredTime('');
-    }, 500);
+    }, 800);
   }
 
   return (
