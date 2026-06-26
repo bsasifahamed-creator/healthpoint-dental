@@ -39,7 +39,6 @@ export function AdminMobileNav({ onLogout }: { onLogout: () => void }) {
             <NavItem href="/admin/doctors" icon={Stethoscope} label="Doctors" onClick={() => setOpen(false)} />
             <NavItem href="/admin/services" icon={DollarSign} label="Services / Prices" onClick={() => setOpen(false)} />
             <NavItem href="/admin/blog" icon={FileText} label="Blog" onClick={() => setOpen(false)} />
-            <NavItem href="/admin/scraper" icon={Globe} label="Scraper" onClick={() => setOpen(false)} />
             <div className="mt-1 border-t border-white/30 pt-1">
               <form action={onLogout}>
                 <button

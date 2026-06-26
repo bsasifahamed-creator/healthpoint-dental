@@ -1,6 +1,6 @@
 'use client';
 
-import { CalendarCheck, Globe, LogOut, Stethoscope, FileText, DollarSign, XCircle } from 'lucide-react';
+import { CalendarCheck, LogOut, Stethoscope, FileText, DollarSign, XCircle } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AdminBackground } from '@/components/admin/admin-background';
@@ -70,10 +70,6 @@ export function AdminPageClient({ bookings, error }: { bookings: any[]; error?: 
               <Link href="/admin/blog" className="glass-pill inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold text-ink transition-colors hover:text-teal">
                 <FileText className="size-3.5" strokeWidth={1.75} aria-hidden />
                 Blog
-              </Link>
-              <Link href="/admin/scraper" className="glass-pill inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold text-ink transition-colors hover:text-teal">
-                <Globe className="size-3.5" strokeWidth={1.75} aria-hidden />
-                Scraper
               </Link>
               <form action={logoutAdmin}>
                 <button type="submit" className="glass-pill inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold text-ink transition-colors hover:text-teal">
