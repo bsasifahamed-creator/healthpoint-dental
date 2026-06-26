@@ -1,4 +1,4 @@
-import DOMPurify from 'isomorphic-dompurify';
+import sanitizeHtml from 'sanitize-html';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowUpRight, Calendar, Clock, Lightbulb } from 'lucide-react';
@@ -95,7 +95,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {'content' in post ? (
               <div
                 className="prose-custom"
-                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
+                dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content) }}
               />
             ) : (
               <>
