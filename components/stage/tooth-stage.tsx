@@ -66,7 +66,7 @@ export function ToothStage() {
   }
 
   return (
-    <div className="fixed inset-0 pointer-events-none lg:inset-y-0 lg:right-0 lg:left-[55%]" style={{ zIndex: 5 }} aria-hidden>
+    <div className="fixed inset-0 pointer-events-none md:inset-y-0 md:right-0 md:left-[55%]" style={{ zIndex: 5 }} aria-hidden>
       <div className="absolute inset-0 tooth-backdrop" />
 
       <Canvas
