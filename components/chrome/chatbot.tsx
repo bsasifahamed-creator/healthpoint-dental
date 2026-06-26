@@ -1,10 +1,27 @@
 'use client';
 
 import { MessageCircle } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export function Chatbot() {
   const href =
     'https://wa.me/971585886915?text=Hi%20Health%20Point%2C%20I%20found%20your%20website%20and%20would%20like%20to%20know%20more%20about%20your%20dental%20services!';
+  
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const checkMenuOpen = () => {
+      setIsMenuOpen(document.body.style.overflow === 'hidden');
+    };
+    
+    checkMenuOpen();
+    const observer = new MutationObserver(checkMenuOpen);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+    
+    return () => observer.disconnect();
+  }, []);
+
+  if (isMenuOpen) return null;
 
   return (
     <>
