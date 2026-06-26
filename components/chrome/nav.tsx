@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useBookingStore } from '@/lib/booking-store';
 import { LiquidButton } from '@/components/ui/liquid-glass-button';
+import { AnimatePresence, motion } from 'motion/react';
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -120,88 +121,110 @@ export function Nav() {
         </div>
       </nav>
 
-       {mobileOpen ? (
-        <div className="fixed inset-0 z-[55] md:hidden">
-          <div className="absolute inset-0 bg-black/30" />
-          <div
-            className="absolute inset-0 overflow-y-auto"
-            style={{ top: '72px' }}
-          >
-          <div
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                'radial-gradient(70% 60% at 20% 30%, #d4f8ea 0%, #c9f3d9 35%, #ddffd2 65%, #eefcff 100%)',
-            }}
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-white/40" />
-          <div className="relative px-6 max-[390px]:px-4 pt-12 pb-8">
-          <ul className="flex flex-col gap-6 max-[390px]:gap-5 text-lg max-[390px]:text-base font-medium text-ink">
-            <li>
-              <a href="/" onClick={() => setMobileOpen(false)}>
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#scene-services" onClick={() => setMobileOpen(false)}>
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#scene-why" onClick={() => setMobileOpen(false)}>
-                Why Us
-              </a>
-            </li>
-            <li>
-              <a href="#scene-team" onClick={() => setMobileOpen(false)}>
-                Team
-              </a>
-            </li>
-            <li>
-              <a href="#contact" onClick={() => setMobileOpen(false)}>
-                Contact
-              </a>
-            </li>
-            <li>
-              <Link href="/blog" onClick={() => setMobileOpen(false)}>
-                Blog
-              </Link>
-            </li>
-            <li className="pt-6 border-t border-stroke">
-              <a href="tel:+971585886915" className="flex items-center gap-2 text-teal">
-                <Phone className="size-5" strokeWidth={1.5} aria-hidden />
-                +971 58 588 6915
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://wa.me/971585886915"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-green-dim"
-                onClick={() => setMobileOpen(false)}
-              >
-                <MessageCircle className="size-5" strokeWidth={1.5} aria-hidden />
-                WhatsApp
-              </a>
-            </li>
-            <li>
-              <LiquidButton
-                type="button"
-                onClick={() => {
-                  open();
-                  setMobileOpen(false);
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-[55] md:hidden bg-black/30"
+              onClick={() => setMobileOpen(false)}
+            />
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed inset-y-0 right-0 z-[56] md:hidden w-full max-w-xs"
+            >
+              <div
+                className="absolute inset-0 h-full w-full"
+                style={{
+                  background:
+                    'radial-gradient(70% 60% at 20% 30%, #d4f8ea 0%, #c9f3d9 35%, #ddffd2 65%, #eefcff 100%)',
                 }}
-                className="liquid-cta w-full rounded-full"
-              >
-                Book Now
-              </LiquidButton>
-            </li>
-          </ul>
-        </div>
-        </div>
-        </div>
-      ) : null}
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-white/40" />
+              <div className="relative h-full overflow-y-auto px-6 max-[390px]:px-4 pt-20 pb-8">
+                <div className="flex items-center justify-end mb-6">
+                  <button
+                    type="button"
+                    onClick={() => setMobileOpen(false)}
+                    className="size-10 flex items-center justify-center rounded-full hover:bg-white/50 transition-colors"
+                    aria-label="Close menu"
+                  >
+                    <X className="size-5" strokeWidth={1.5} />
+                  </button>
+                </div>
+                <ul className="flex flex-col gap-6 max-[390px]:gap-5 text-lg max-[390px]:text-base font-medium text-ink">
+                  <li>
+                    <a href="/" onClick={() => setMobileOpen(false)}>
+                      Home
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#scene-services" onClick={() => setMobileOpen(false)}>
+                      Services
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#scene-why" onClick={() => setMobileOpen(false)}>
+                      Why Us
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#scene-team" onClick={() => setMobileOpen(false)}>
+                      Team
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#contact" onClick={() => setMobileOpen(false)}>
+                      Contact
+                    </a>
+                  </li>
+                  <li>
+                    <Link href="/blog" onClick={() => setMobileOpen(false)}>
+                      Blog
+                    </Link>
+                  </li>
+                  <li className="pt-6 border-t border-stroke">
+                    <a href="tel:+971585886915" className="flex items-center gap-2 text-teal">
+                      <Phone className="size-5" strokeWidth={1.5} aria-hidden />
+                      +971 58 588 6915
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://wa.me/971585886915"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-green-dim"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      <MessageCircle className="size-5" strokeWidth={1.5} aria-hidden />
+                      WhatsApp
+                    </a>
+                  </li>
+                  <li>
+                    <LiquidButton
+                      type="button"
+                      onClick={() => {
+                        open();
+                        setMobileOpen(false);
+                      }}
+                      className="liquid-cta w-full rounded-full"
+                    >
+                      Book Now
+                    </LiquidButton>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 }
