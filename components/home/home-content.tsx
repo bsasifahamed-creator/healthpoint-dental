@@ -19,8 +19,6 @@ import { Footer } from '@/components/footer/footer';
 import { ShaderBackground } from '@/components/ui/shaders-hero-section';
 import type { StoreDoctor, StoreService, StoreBlogPost } from '@/lib/data-store';
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
-
 const ToothStage = dynamic(
   () => import('@/components/stage/tooth-stage').then((m) => m.ToothStage),
   { ssr: false },
@@ -36,6 +34,7 @@ export function HomeContent({
   const isDesktop = useIsDesktop();
 
   useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger, useGSAP);
     const set = useScrollState.getState().set;
 
     if (isDesktop) {
