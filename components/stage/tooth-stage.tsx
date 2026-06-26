@@ -2,7 +2,7 @@
 
 import { Canvas } from '@react-three/fiber';
 import { Environment, AdaptiveDpr, AdaptiveEvents, Preload } from '@react-three/drei';
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense } from 'react';
 import * as THREE from 'three';
 import { ToothModel } from './tooth-model';
 import { Lighting } from './lighting';
@@ -51,22 +51,8 @@ function FallbackTooth({ simple = false }: { simple?: boolean }) {
 }
 
 export function ToothStage() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 767px)');
-    const update = () => setIsMobile(mq.matches);
-    update();
-    mq.addEventListener('change', update);
-    return () => mq.removeEventListener('change', update);
-  }, []);
-
-  if (isMobile) {
-    return null;
-  }
-
   return (
-    <div className="fixed inset-0 pointer-events-none md:inset-y-0 md:right-0 md:left-[55%]" style={{ zIndex: 5 }} aria-hidden>
+    <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 5 }} aria-hidden>
       <div className="absolute inset-0 tooth-backdrop" />
 
       <Canvas
