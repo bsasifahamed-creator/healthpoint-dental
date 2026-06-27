@@ -57,7 +57,7 @@ export function AdminPageClient({ bookings, error }: { bookings: any[]; error?: 
     <div className="relative min-h-screen overflow-hidden text-ink">
       <AdminBackground />
 
-      <header className="relative z-10 px-4 pt-6 sm:px-8">
+      <header className="relative z-20 px-4 pt-6 sm:px-8">
         <div className="glass-card-strong mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 rounded-3xl px-4 py-3 sm:flex-nowrap sm:gap-4 sm:px-7 sm:py-4">
           <div className="flex items-center gap-3">
             <Image src="/health point png logo.png" alt="" width={36} height={36} className="size-9 object-contain" priority />
