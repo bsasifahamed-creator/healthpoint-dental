@@ -12,7 +12,8 @@ export function Chatbot() {
 
   useEffect(() => {
     const checkMenuOpen = () => {
-      const isMenuOpen = document.body.style.overflow === 'hidden';
+      const bodyStyles = document.body.style;
+      const isMenuOpen = bodyStyles.overflow === 'hidden' || bodyStyles.position === 'fixed';
       setIsVisible(!isMenuOpen);
     };
     
