@@ -67,7 +67,13 @@ export function AdminMobileNav({ onLogout }: { onLogout: () => void }) {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'spring', damping: 30, stiffness: 300, mass: 0.8 }}
-                className="fixed inset-y-0 right-0 z-[99999] w-72 max-w-[85vw] md:hidden"
+                drag="x"
+                dragConstraints={{ left: 0 }}
+                dragElastic={0.15}
+                onDragEnd={(_, info) => {
+                  if (info.offset.x > 80) setOpen(false);
+                }}
+                className="fixed inset-0 z-[99999] md:hidden"
               >
                 <div
                   className="absolute inset-0"
