@@ -106,18 +106,22 @@ export function SiteLoader() {
             <Image
               src="/health point png logo.png"
               alt=""
-              width={80}
-              height={80}
-              className="size-20 object-contain"
+              width={96}
+              height={96}
+              className="size-24 object-contain"
               priority
             />
 
-            <motion.span
-              className="block size-1.5 rounded-full bg-teal/60"
-              animate={{ opacity: [0.3, 0.8, 0.3] }}
-              transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-              aria-label="Loading"
-            />
+            <div className="flex items-center gap-1.5" aria-label="Loading">
+              {[0, 1, 2, 3].map((i) => (
+                <motion.span
+                  key={i}
+                  className="block size-1.5 rounded-full bg-teal/60"
+                  animate={{ opacity: [0.25, 0.9, 0.25] }}
+                  transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut', delay: i * 0.2 }}
+                />
+              ))}
+            </div>
           </motion.div>
         </motion.div>
       ) : null}
