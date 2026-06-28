@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from 'motion/react';
 /**
  * Glassy splash loader — reuses the exact same MeshGradient stack as the
  * hero (so the background feels continuous with the site) and shows a
- * centered glass card with the logo, wordmark, and a 3-dot bounce loader.
+ * centered glass card with the logo and a minimal pulsing dot.
  *
  * Dismisses on `window.load` with a short minimum display window and a
  * safety timeout fallback so the loader never gets stuck.
@@ -106,32 +106,18 @@ export function SiteLoader() {
             <Image
               src="/health point png logo.png"
               alt=""
-              width={44}
-              height={44}
-              className="size-11 object-contain"
+              width={80}
+              height={80}
+              className="size-20 object-contain"
               priority
             />
 
-            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.32em] text-ink">
-              Health Point
-            </p>
-
-            <div className="flex items-center gap-2" aria-label="Loading">
-              {[0, 1, 2].map((i) => (
-                <motion.span
-                  key={i}
-                  className="block size-2 rounded-full bg-teal"
-                  initial={{ y: 0, opacity: 0.4 }}
-                  animate={{ y: [0, -6, 0], opacity: [0.4, 1, 0.4] }}
-                  transition={{
-                    duration: 0.9,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                    delay: i * 0.15,
-                  }}
-                />
-              ))}
-            </div>
+            <motion.span
+              className="block size-1.5 rounded-full bg-teal/60"
+              animate={{ opacity: [0.3, 0.8, 0.3] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+              aria-label="Loading"
+            />
           </motion.div>
         </motion.div>
       ) : null}
