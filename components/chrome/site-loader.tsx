@@ -106,9 +106,9 @@ export function SiteLoader() {
             <Image
               src="/health point png logo.png"
               alt=""
-              width={96}
-              height={96}
-              className="size-24 object-contain"
+              width={160}
+              height={160}
+              className="size-40 object-contain"
               priority
             />
 
@@ -116,7 +116,7 @@ export function SiteLoader() {
               {[0, 1, 2, 3].map((i) => (
                 <motion.span
                   key={i}
-                  className="block size-1.5 rounded-full bg-teal/60"
+                  className="block size-2 rounded-full bg-teal/70"
                   animate={{ opacity: [0.25, 0.9, 0.25] }}
                   transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut', delay: i * 0.2 }}
                 />
