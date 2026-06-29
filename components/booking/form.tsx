@@ -191,21 +191,18 @@ export function BookingForm() {
         ) : null}
 
         {step === 1 && selectedService ? (
-          (() => {
-            const SelectedIcon = selectedService.icon;
-            return (
           <motion.div
             key="compose"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
             className="space-y-4"
           >
             {/* Recap card */}
             <div className="glass-card rounded-2xl border border-teal/40 p-4 flex items-center gap-3">
               <span className="glass-pill flex size-10 shrink-0 items-center justify-center rounded-xl text-teal">
-                <SelectedIcon className="size-5" strokeWidth={1.6} aria-hidden />
+                <Sparkles className="size-5" strokeWidth={1.6} aria-hidden />
               </span>
               <div className="min-w-0 flex-1">
                 <p className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold text-teal">
@@ -310,8 +307,6 @@ export function BookingForm() {
               .
             </p>
           </motion.div>
-            );
-          })()
         ) : null}
       </AnimatePresence>
     </div>
