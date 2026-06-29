@@ -7,7 +7,7 @@ const CSP = [
   "font-src 'self' https://fonts.gstatic.com",
   "img-src 'self' data: blob: https://*.supabase.co https://maps.gstatic.com https://maps.googleapis.com",
   "frame-src 'self' https://*.supabase.co",
-  "connect-src 'self' blob: https://*.supabase.co https://*.vercel.live https://va.vercel-scripts.com https://raw.githack.com https://raw.githubusercontent.com",
+  "connect-src 'self' blob: https://*.supabase.co https://*.vercel.live https://va.vercel-scripts.com https://raw.githubusercontent.com",
   "media-src 'self'",
   "object-src 'none'",
   "base-uri 'self'",

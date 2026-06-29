@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase/server';
+import { requireAdmin } from '@/lib/admin/api-auth';
 
 export async function POST(request: NextRequest) {
+  const auth = requireAdmin();
+  if (auth) return auth;
+
   try {
     const body = await request.json();
     const { bookingId, updates } = body;

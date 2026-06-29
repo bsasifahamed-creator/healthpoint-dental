@@ -28,8 +28,8 @@ import {
   TrendingUp,
   Users,
 } from "lucide-react";
-import { signOut } from "next-auth/react";
-import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
+import { logoutAdmin } from "@/app/admin/actions";
 
 type AdminShellProps = {
   children: React.ReactNode;
@@ -96,13 +96,11 @@ export function AdminShell({ children, user }: AdminShellProps) {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-
-  const isDark = theme === "dark";
+  const [isDark, setIsDark] = useState(false);
 
   const handleLogout = async () => {
-    await signOut({ redirect: false });
-    router.push("/admin/login");
+    await logoutAdmin();
+    router.push("/admin");
   };
 
   const content = (
@@ -212,7 +210,7 @@ export function AdminShell({ children, user }: AdminShellProps) {
           </div>
           <button
             type="button"
-            onClick={() => setTheme(isDark ? "light" : "dark")}
+            onClick={() => setIsDark((v) => !v)}
             className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700"
           >
             {isDark ? (

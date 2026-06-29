@@ -1,7 +1,31 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase/server';
 
+const BOOKING_RATE_LIMIT_MAX = 10;
+const BOOKING_RATE_LIMIT_WINDOW = 60_000;
+const bookingRateMap = new Map<string, { count: number; resetAt: number }>();
+
+function checkBookingRateLimit(key: string): boolean {
+  const now = Date.now();
+  const entry = bookingRateMap.get(key);
+  if (!entry || now > entry.resetAt) {
+    bookingRateMap.set(key, { count: 1, resetAt: now + BOOKING_RATE_LIMIT_WINDOW });
+    return true;
+  }
+  if (entry.count >= BOOKING_RATE_LIMIT_MAX) return false;
+  entry.count++;
+  return true;
+}
+
 export async function POST(request: NextRequest) {
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+  if (!checkBookingRateLimit(`booking:${ip}`)) {
+    return NextResponse.json(
+      { error: 'Too many requests. Try again later.' },
+      { status: 429 }
+    );
+  }
+
   try {
     const body = await request.json();
     const { serviceKey, patientName, patientPhone, patientEmail, patientNotes, date, time } = body;
